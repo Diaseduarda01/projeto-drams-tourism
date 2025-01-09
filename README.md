@@ -61,7 +61,12 @@ Promover o turismo nacional ao:
 
 
 ### **Aplicativo Mobile**  
-<img src="https://via.placeholder.com/1200x600.png?text=Preview+Mobile+Dreams+Tourism" alt="Preview Mobile Dreams Tourism" style="border-radius: 10px; width: 100%; margin-bottom: 20px;">  
+![image](https://github.com/user-attachments/assets/887e0261-7890-420a-bd56-ca60271445c0)
+![image](https://github.com/user-attachments/assets/234b0ef1-55d9-4524-821f-a7496ef37556)
+![image](https://github.com/user-attachments/assets/92207bb5-1d0e-4a69-aab7-dab08aa8242a)
+
+
+
 
 ---
 
