@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Formulário de Pacote de Viagem</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+		integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link rel="shortcut icon" href="/resources/static/img/icon_aviao.png.png" type="image/x-icon">
+	<link rel="stylesheet" href="/resources/static/css/pacote_novo.css"> <!-- Inclui um arquivo de estilo CSS externo -->
+</head>
+
+<body>
+	<form th:action="@{/dreamstourism/admin/dreams/pacote/novo}" method="post" class="container bg-light mt-4" id="package-form"
+		enctype="multipart/form-data">
+		<h1>Novo pacote</h1> <!-- Título do formulário -->
+		<!-- <input type="hidden" name="id" th:value="${pacote.id}"> --><!-- Campo oculto para o ID --> 
+		<div>
+			<label for="package-name">Nome do Passeio:</label>
+			<input type="text" id="package-name" name="nome_pacote" th:value="${pacote.nomePacote}" required>
+		</div>
+		<div>
+			<label for="package-price">Preço:</label>
+			<input type="number" class="form-control" id="package-price" name="preco" th:value="${pacote.preco}"
+				required>
+		</div>
+		<div class="form-group">
+			<label for="statusPacote">Status do pacote:</label>
+			<select class="form-control" id="statusPacote" name="statusPacote" th:value="${pacote.statusPacote}">
+				<option></option>
+				<option value="ativo">ativo</option>
+				<option value="desativo">desativo</option>
+				
+			</select>
+		</div>
+		<div class="form-group">
+			<label for="duracao">Duração (horas):</label>
+			<select class="form-control" id="duracao" name="duracao" th:value="${pacote.duracao}">
+				<option></option>
+				<option value="1 Hora">1 Hora</option>
+				<option value="2 Horas">2 Horas</option>
+				<option value="4 Horas">4 Horas</option>
+			</select>
+		</div>
+		<!-- Campos de texto para as descrições dos cartões -->
+		
+		<div class="form-group">
+			<label for="descricao_lugar">Descrição do Passeio:</label>
+			<input type="text" class="form-control" id="descricao_lugar" name="descricao_lugar"
+				th:value="${pacote.descricaoLugar}" required>
+		</div>
+		<div class="form-group">
+			<label for="descricao_card">Descrição do card:</label>
+			<input type="text" class="form-control" id="descricao_card" name="descricao_card"
+				th:value="${pacote.descricaoCard}" required>
+		</div>
+		<div class="form-group">
+			<label for="titulo_card">Título do card:</label>
+			<input type="text" class="form-control" id="titulo_card" name="titulo_card"
+				th:value="${pacote.tituloCard}" required>
+		</div>
+		<div class="form-group">
+			<label for="inclusos">Inclusos:</label>
+			<input type="text" class="form-control" id="inclusos" name="inclusos"
+				th:value="${pacote.inclusos}" required>
+		</div>
+
+		<!-- ...cabeçalho e outras partes do HTML... -->
+
+		<!-- Simplificação do código para as imagens -->
+		<div class="image-container">
+			<label for="foto">Imagem card:</label>
+			<input type="file" id="file" name="file" accept="image/*" required>
+			<img id="foto-preview" src="#" alt="Imagem de pré-visualização"
+				style="max-width: 200px; max-height: 200px; margin-top: 10px;">
+		</div>
+
+		<div class="image-container">
+			<label for="foto_card1">Imagem 1:</label>
+			<input type="file" id="file1" name="file1" accept="image/*" required>
+			<img id="foto-preview1" src="#" alt="Imagem de pré-visualização"
+				style="max-width: 200px; max-height: 200px; margin-top: 10px;">
+		</div>
+
+		<!-- Repetição do bloco para várias imagens -->
+		<div class="image-container">
+			<label for="foto_card2">Imagem 2:</label>
+			<input type="file" id="file2" name="file2" accept="image/*" required>
+			<img id="foto-preview2" src="#" alt="Imagem de pré-visualização"
+				style="max-width: 200px; max-height: 200px; margin-top: 10px;">
+		</div>
+
+		<!-- Bloco para a terceira imagem -->
+		<div class="image-container">
+			<label for="foto_card3">Imagem 3:</label>
+			<input type="file" id="file3" name="file3" accept="image/*" required>
+			<img id="foto-preview3" src="#" alt="Imagem de pré-visualização"
+				style="max-width: 200px; max-height: 200px; margin-top: 10px;">
+		</div>
+
+		<!-- Bloco para a quarta imagem -->
+		<div class="image-container">
+			<label for="foto_card4">Imagem 4:</label>
+			<input type="file" id="file4" name="file4" accept="image/*" required>
+			<img id="foto-preview4" src="#" alt="Imagem de pré-visualização"
+				style="max-width: 200px; max-height: 200px; margin-top: 10px;">
+		</div>
+		<div>
+			<input type="submit" class="btn btn-primary" value="Enviar pacote">
+			<!-- Botão para enviar o formulário -->
+		</div>
+	</form>
+	<script>
+		// Captura de todos os elementos com a classe 'file-input' e iteração para aplicar a funcionalidade de pré-visualização
+		  const fileInputs = document.querySelectorAll('input[type="file"]');
+    const fotoPreviews = document.querySelectorAll('img[id^="foto-preview"]');
+
+    fileInputs.forEach((input, index) => {
+        input.addEventListener('change', function () {
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+
+                reader.onload = function (e) {
+                    if (fotoPreviews[index]) {
+                        fotoPreviews[index].src = e.target.result;
+                    }
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        });
+    });
+	</script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,19 @@
+.horizontal-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 30px;
+  }
+  
+  .horizontal-list li {
+    display: inline-block;
+    margin-right: 10px; 
+    /* width: 100px; */
+    height: 100px;
+    margin: 5px;    
+  }
+  .icon-check {
+    color: #979797;
+    font-size: 50px;
+    margin-right: 20px;
+    cursor: pointer;
+  }

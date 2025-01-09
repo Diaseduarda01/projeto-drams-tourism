@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title>Lista Pacote</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Inclusão de estilos CSS -->
+
+
+	
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+		integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+		integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="shortcut icon" href="/img/icon_aviao.png.png" type="image/x-icon">
+
+
+
+
+</head>
+
+<body>
+	<script th:inline="javascript">
+		/*<![CDATA[*/
+		// Variável para exibir uma mensagem (pode ser preenchida no servidor)
+		var msg = /*[[${msg}]]*/ null;
+		if (msg != null) {
+			alert(msg);
+		}
+        /*]]>*/
+	</script>
+	<!-- navegador e sidebar -->
+
+	<!-- create navigation bar ( header) -->
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+					aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#" th:href="@{/admin/home}">Dreams Tourism</a>
+			</div>
+			<div id="navbar" class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li><a th:href="@{/dreamstourism/users/perfil/{username}(username=${username})}">Perfil</a></li>
+					<li><a th:href="@{/dreamstourism/admin/dreams/pacote/list}">Gestão de Pacotes</a></li>
+					<li sec:authorize="isAuthenticated()"><a th:href="@{/admin/usuarios/todos-usuarios}">Gestão de
+							Usuários</a></li>
+					<li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></li>
+
+				</ul>
+			</div>
+		</div>
+	</nav>
+	 <br><br><br> <br><br>
+	<div class="container bg-light mt-4">
+		<div>
+			<!-- Botões para voltar para a página inicial e adicionar um novo pacote -->
+			<a th:href="@{/dreamstourism/home}" class="btn btn-primary m-2"
+				style="background-color: #8c54ff; border-color: #8c54ff;">
+				<i class="fas fa-home ml-2"></i>
+				voltar
+			</a>
+			<a th:href="@{/dreamstourism/admin/dreams/pacote/novo}" class="btn btn-primary m-2"
+				style="background-color: #8c54ff; border-color: #8c54ff;">
+				<i class="fas fa-cart-plus ml-2"></i>
+				novo pacote
+			</a>
+		</div>
+		<div>
+			<h2 class="my-5">Pacotes</h2>
+			<table class="table table-striped table-responsive-md">
+				<thead>
+					<tr>
+						<th>id</th>
+						<th>nome</th>
+						<th>duração</th>
+						<th>preço</th>
+						<th>status pacote</th>
+						<th>editar</th>
+						<th>deletar</th>
+					</tr>
+				</thead>
+				<tbody>
+					<!-- Loop para exibir dados de pacotes -->
+					<tr th:each="pacote:${pacotes}">
+						<td th:text="${pacote.id}"></td>
+						<td th:text="${pacote.nomePacote}"></td>
+						<td th:text="${pacote.duracao}"></td>
+						<td th:text="${#numbers.formatCurrency(pacote.preco)}"></td>
+						<td th:text="${pacote.statusPacote}"></td>
+						<td>
+							<!-- Botão de edição -->
+							<a th:href="@{/admin/dreams/pacote/{id}/edit (id=${pacote.id}) }" class="btn btn-primary"
+								style="background-color: #8c54ff; border-color: #8c54ff;">
+								<i class="fas fa-edit ml-2"></i>
+							</a>
+						<td>
+							<!-- Botão para deletar um pacote th:href="'/dreams/pacote/' + ${pacote.id} + '/delete'" -->
+							<a th:href="'/admin/dreams/pacote/' + ${pacote.id} + '/delete'">
+								<img src="/img/delete.png" alt="delete" class="cart-icon">
+							</a>
+						</td>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<br><br>
+
+
+
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+		crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+		integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+		crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+		integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+		crossorigin="anonymous"></script>
+	<script src="/js/sidebar.js"></script>
+</body>
+
+</html>

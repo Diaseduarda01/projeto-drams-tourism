@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Registration and Login App</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+		integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
+	<link rel="shortcut icon" href="/img/icon_aviao.png.png" type="image/x-icon">
+	<link rel="stylesheet" type="text/css" href="/css/sidebar.css" media="screen">
+
+
+
+
+</head>
+
+<body>
+	<!-- navegador e sidebar -->
+	<nav class="navbar sticky-top navbar-light bg-light">
+		<div class="logo">
+			<i class="bx bx-menu menu-icon"></i>
+			<span class="logo-name">Dreams Tourism</span>
+		</div>
+		<div class="sidebar">
+			<div class="logo">
+				<i class="bx bx-menu menu-icon"></i>
+				<span class="logo-name">Dreams tourism</span>
+			</div>
+
+			<div class="sidebar-content">
+				<ul class="lists">
+					<li class="list">
+						<a href="/dreamstourism/home" class="nav-link">
+							<i class="bx bx-home-alt icon"></i>
+							<span class="link">Início</span>
+						</a>
+					</li>
+
+
+				</ul>
+
+				<div class="bottom-cotent">
+
+					<li class="list" sec:authorize="isAuthenticated()">
+						<a th:href="@{/logout}" class="nav-link">
+							<i class="fa-solid fa-right"></i>
+							<span class="link">Logout</span>
+						</a>
+					</li>
+				</div>
+			</div>
+		</div>
+	</nav>
+	<section class="overlay"></section>
+
+
+
+	<br>
+	<br>
+
+
+	<div class="container">
+		<h1> Home Page - Usuário Comum </h1>
+		Bem-Vindo <b><span sec:authentication="principal.username"> User</span></b>
+
+	</div>
+	
+	
+	<br>
+	<br>
+	<br>
+	<br>
+	<div class="jumbotron" style="width: 500px; position: relative; margin-left: 30%;">
+		<h1 class="display-4">Bem-vindo de volta!</h1>
+		<p class="lead">Sentimos sua falta...</p>
+		<hr class="my-4">
+		<p>Clique no botão para ser direcionado para nossa página inicial e aprovite.</p>
+		<a class="btn btn-primary btn-lg" href="/dreamstourism/home" role="button">clique em mim</a>
+	</div>
+	
+	
+	
+	
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+		crossorigin="anonymous"></script>
+
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+		crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+		integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+		crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+		integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+		crossorigin="anonymous"></script>
+	<script src="/js/sidebar.js"></script>
+</body>
+
+</html>

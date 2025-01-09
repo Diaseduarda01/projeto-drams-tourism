@@ -1,0 +1,14 @@
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav li {
+    display: inline; /* ou use display: inline-block; */
+    margin-right: 10px; /* para adicionar algum espaçamento entre os itens */
+}
+
+.atb{
+	size: 30px;
+}

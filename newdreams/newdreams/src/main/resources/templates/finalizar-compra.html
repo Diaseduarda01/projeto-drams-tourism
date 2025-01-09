@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finalizar Compra</title>
+    <link rel="shortcut icon" href="/resources/static/img/icon_aviao.png.png" type="image/x-icon"> 
+    <link rel="stylesheet" href="seu-estilo.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Finalizar Compra</h2>
+        
+        <!-- Exibição de detalhes do pacote -->
+        <div class="pacote-details">
+            <h3>Detalhes do Pacote</h3>
+            <!-- Aqui você pode listar os detalhes do pacote, como destino, data de viagem, etc. -->
+        </div>
+        
+        <!-- Seleção de forma de pagamento -->
+        <div class="payment-options">
+            <h3>Escolha a Forma de Pagamento</h3>
+            <input type="radio" name="payment" id="credit-card" value="credit-card">
+            <label for="credit-card">Cartão de Crédito</label>
+            <input type="radio" name="payment" id="debit-card" value="debit-card">
+            <label for="debit-card">Cartão de Débito</label>
+            <input type="radio" name="payment" id="boleto" value="boleto">
+            <label for="boleto">Boleto Bancário</label>
+        </div>
+        
+        <!-- Formulários de pagamento -->
+        <div class="payment-forms">
+            <!-- Formulário de Cartão de Crédito -->
+            <div id="credit-card-form" class="payment-form">
+                <h3>Pagamento com Cartão de Crédito</h3>
+                <!-- Campos para detalhes do cartão de crédito -->
+            </div>
+            
+            <!-- Formulário de Cartão de Débito -->
+            <div id="debit-card-form" class="payment-form">
+                <h3>Pagamento com Cartão de Débito</h3>
+                <!-- Campos para detalhes do cartão de débito -->
+            </div>
+            
+            <!-- Formulário de Boleto Bancário -->
+            <div id="boleto-form" class="payment-form">
+                <h3>Boleto Bancário</h3>
+                <!-- Geração e exibição do boleto bancário -->
+            </div>
+        </div>
+        
+        <!-- Exibição do valor da compra -->
+        <div class="total">
+            <h3>Total da Compra</h3>
+            <!-- Aqui você pode exibir o valor total da compra -->
+        </div>
+        
+        <!-- Botão para finalizar a compra -->
+        <button id="finalizar-compra" class="btn">Finalizar Compra</button>
+    </div>
+    
+    <script>
+        // Lógica JavaScript para mostrar/ocultar os formulários de pagamento com base na opção selecionada
+        const creditCardForm = document.getElementById("credit-card-form");
+        const debitCardForm = document.getElementById("debit-card-form");
+        const boletoForm = document.getElementById("boleto-form");
+        const finalizarCompraBtn = document.getElementById("finalizar-compra");
+        
+        document.querySelectorAll('input[name="payment"]').forEach((radio) => {
+            radio.addEventListener("change", () => {
+                creditCardForm.style.display = "none";
+                debitCardForm.style.display = "none";
+                boletoForm.style.display = "none";
+                
+                if (radio.value === "credit-card") {
+                    creditCardForm.style.display = "block";
+                } else if (radio.value === "debit-card") {
+                    debitCardForm.style.display = "block";
+                } else if (radio.value === "boleto") {
+                    boletoForm.style.display = "block";
+                }
+            });
+        });
+        
+        // Lógica JavaScript para finalizar a compra
+        finalizarCompraBtn.addEventListener("click", () => {
+            // Aqui você pode adicionar a lógica para processar o pagamento e concluir a compra
+            alert("Compra finalizada com sucesso!");
+        });
+    </script>
+</body>
+</html>

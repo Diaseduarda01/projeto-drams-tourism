@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Novo Cliente Criado</title>
+		<meta charset="utf-8">
+		<link rel="shortcut icon" href="/img/icon_aviao.png.png" type="image/x-icon">
+	</head>
+	<body>
+		<h1>Nova Reserva criado!</h1>
+		<!-- Tabela para exibir os detalhes do novo cliente -->
+		<table border="1">
+			<tr>
+				<th>ID:</th>
+				<td>
+					<span th:text="${novoReserva.id}"></span>
+				</td>
+			</tr>
+			<tr>
+				<th>Data:</th>
+				<td>
+					<span th:text="${novoReserva.data}"></span>
+				</td>
+			</tr>
+			<tr>
+				<th>Hora:</th>
+				<td>
+					<span th:text="${novoReserva.hora}"></span>
+				</td>
+			</tr>
+			<tr>
+				<th>Hora:</th>
+				<td>
+					<span th:text="${novoReserva.pacote.id}"></span>
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>

@@ -1,0 +1,15 @@
+.linha{
+    width: 100%;
+    /* background-color: aqua; */
+    position: relative;
+    align-items: center;
+}
+/* .linhazinha {
+    height: 3px;
+    size: 5px;
+    width: 10em;
+    background-color: black;
+    position: relative;
+    left: 125px;
+    top: -10px;
+} */
